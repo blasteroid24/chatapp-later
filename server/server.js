@@ -52,8 +52,18 @@ io.on('connection', (socket) => {
   });
 });
 
+module.exports = (req, res) => {
+  
+  server(req, res);  
+};
 
+const PORT = process.env.PORT;
+if (process.env.NODE_ENV !== 'production') {
+    server.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
 
-server.listen(process.env.PORT, () => {
-  console.log(`Server running on port`,process.env.PORT);
-});
+// server.listen(process.env.PORT, () => {
+//   console.log(`Server running on port`,process.env.PORT);
+// });
